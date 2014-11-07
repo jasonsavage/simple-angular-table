@@ -1,0 +1,35 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th ng-repeat="col in columns" 
+                    ng-click="applySort(col)">
+                    {{col.label}}
+                </th>
+            </tr>
+            <tr>
+                <th ng-repeat="col in columns">
+                    <input type="text" 
+                           ng-model="filters[col.property]" 
+                           ng-change="applyFilters(col)" />
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in tableRows">
+                <td ng-repeat="col in columns">
+                    {{row[col.property]}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr />
+    <!-- We can just use a pre-built component to page since that is beyond the scope of this tutorial -->
+    <pagination ng-model="currentPage" 
+                items-per-page="pageSize" 
+                total-items="rowsTotal" 
+                previous-text="&lsaquo;" 
+                next-text="&rsaquo;">
+    </pagination>
+</div>
