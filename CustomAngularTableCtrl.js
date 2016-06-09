@@ -95,9 +95,9 @@ mainApp.controller('customAngularTableCtrl', function ($scope) {
         // - current page is 1, based but our array is 0 based so subtract 1
         var pageStartIndex = ($scope.currentPage-1) * $scope.pageSize;
         // - page end index is either page size or whatever is left in the array
-        var pageEndIndex = pageStartIndex + Math.min(viewArray.length, $scope.pageSize);
-        // - splice view array to page start and end index's, and return the page we want to view
-        viewArray = viewArray.splice(pageStartIndex, pageEndIndex);
+        var pageEndIndex = pageStartIndex + $scope.pageSize;
+        // - slice view array to page start and end index's, and return the page we want to view
+        viewArray = viewArray.slice(pageStartIndex, pageEndIndex);
         
         //pass the ref to the viewArray to $scope and let angular refresh the html table
         $scope.tableRows = viewArray;
